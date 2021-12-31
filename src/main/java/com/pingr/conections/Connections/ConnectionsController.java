@@ -30,4 +30,9 @@ public class ConnectionsController {
     public Boolean removeFriend(@PathVariable("aid") Long aid, @PathVariable("bid") Long bid) {
         return this.accountService.removeFriendshipBetween(aid, bid);
     }
+
+    @GetMapping("/{id}/count")
+    public Long countFriends(@PathVariable("id") Long id) {
+        return this.accountService.contaAmigosAccount(id);
+    }
 }

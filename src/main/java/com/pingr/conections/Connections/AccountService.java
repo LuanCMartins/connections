@@ -122,4 +122,13 @@ public class AccountService {
         this.friendshipUnmadeProducer.sendMessage(List.of(a,b));
         return true;
     }
+
+    public Long contaAmigosAccount(Long id) {
+        Optional<Account> optionalAccount = this.repo.findById(id);
+
+        if(!optionalAccount.isPresent()) return 0L;
+
+        Account conta = optionalAccount.get();
+        return Long.parseLong(String.valueOf(conta.getFriends().size()));
+    }
 }

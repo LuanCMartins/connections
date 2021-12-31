@@ -5,12 +5,12 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       bootstrap-servers: localhost:9092
     consumer:
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      key-serializer: org.apache.kafka.common.serialization.StringDeserializer
       bootstrap-servers: localhost:9092
   datasource:
     username: root
-    url: jdbc:postgresql://localhost:5432/accounts
+    url: jdbc:postgresql://localhost:5433/connections
     password: secret
   jpa:
     properties:
@@ -19,11 +19,18 @@ spring:
         format_sql: 'true'
     hibernate:
       ddl-auto: create-drop
+      #ddl-auto: update
     show-sql: 'true'
 
 topic:
   accounts: new_accounts_topic
+  update: account_updated
+  delete: account_deleted
+  friendship:
+    made: friendship_made
+    unmade: friendship_unmade
 
 server:
   error:
     include-message: always
+  port: 8090

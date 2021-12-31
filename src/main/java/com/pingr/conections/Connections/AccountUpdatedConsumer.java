@@ -7,23 +7,23 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-@Component  // prepara para injeção de dependência do @Autowired
-public class NewAccountConsumer {
+@Component
+public class AccountUpdatedConsumer {
     private final AccountService service;
 
     @Autowired
-    public NewAccountConsumer(AccountService service) {
+    public AccountUpdatedConsumer(AccountService service) {
         this.service = service;
     }
 
     @KafkaListener(
-            topics = "${topic.accounts}",
-            groupId = "connection_new_accounts"
+            topics = "${topic.update}",
+            groupId = "connection_account_updated"
     )
     public void consume(String message) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         Account account = mapper.readValue(message, Account.class);
         System.out.println(account.toString());
-        this.service.storeAccount(account);
+        this.service.updateAccount(account);
     }
 }

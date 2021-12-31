@@ -1,4 +1,4 @@
-package com.pingr.conections.Connections;
+/*package com.pingr.conections.Connections;
 
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -48,4 +48,4 @@ public class KafkaConfig {
 
         return factory;
     }
-}
+}*/

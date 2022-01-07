@@ -1,18 +1,19 @@
 package com.pingr.conections.Connections;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @JsonSerialize
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Account {
     @Id
+   // @JsonProperty("id")
     private Long id;
 
     @Column(
@@ -20,9 +21,11 @@ public class Account {
             nullable = false,
             unique = true
     )
+    //@JsonProperty("username")
     private String username;
 
-    @OneToMany
+    //@OneToMany Não funcionou ao cadastrar mais de uma amizade ele dava erro de unique key repetida na tabela
+    @ManyToMany
     private Set<Account> friends = new HashSet<>();
 
     public Account(Long id, String username, Set<Account> friends) {

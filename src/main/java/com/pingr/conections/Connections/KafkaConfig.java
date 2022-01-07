@@ -37,7 +37,7 @@ public class KafkaConfig {
         return new DefaultKafkaConsumerFactory<>(
                 consumerConfig(),
                 new StringDeserializer(),
-                new org.springframework.kafka.support.serializer.JsonDeserializer<>(Account.class)
+                new org.springframework.kafka.support.serializer.JsonDeserializer<>(Account.class, false)
         );
     }
 

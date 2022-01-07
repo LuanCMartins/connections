@@ -9,11 +9,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-//@JsonSerialize
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonSerialize
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Account {
     @Id
-    @JsonProperty("id")
+   // @JsonProperty("id")
     private Long id;
 
     @Column(
@@ -21,7 +21,7 @@ public class Account {
             nullable = false,
             unique = true
     )
-    @JsonProperty("username")
+    //@JsonProperty("username")
     private String username;
 
     //@OneToMany Não funcionou ao cadastrar mais de uma amizade ele dava erro de unique key repetida na tabela

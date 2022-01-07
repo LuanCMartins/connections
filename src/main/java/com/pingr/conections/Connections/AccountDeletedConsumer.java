@@ -20,10 +20,11 @@ public class AccountDeletedConsumer {
             topics = "${topic.delete}",
             groupId = "connection_account_deleted"
     )
-    public void consume(String message) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
+    public void consume(/*String message*/Account account) throws IOException {
+        /*ObjectMapper mapper = new ObjectMapper();
         Account account = mapper.readValue(message, Account.class);
         System.out.println(account.toString());
+        this.service.deleteAccount(account);*/
         this.service.deleteAccount(account);
     }
 }

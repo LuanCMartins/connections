@@ -74,8 +74,9 @@ public class AccountService {
             if(account.getId() != null) {
                 Optional<Account> optionalAccount = this.repo.findAccountById(account.getId());
                 if(optionalAccount.isPresent()) {
-                    Account contaEncontrada = optionalAccount.get();
-                    this.repo.delete(contaEncontrada);
+                    Account accountFound = optionalAccount.get();
+
+                    this.repo.delete(accountFound);
                     this.repo.flush();
                     return true;
                 }
@@ -88,15 +89,15 @@ public class AccountService {
         }
     }
 
-    public List<Account> listaAmigos(Long id) {
+    public List<Account> listFriends(Long id) {
         if (id == null) return new ArrayList<>();
 
         Optional<Account> optionalAccount = this.repo.findById(id);
 
         if(!optionalAccount.isPresent()) return new ArrayList<>();
 
-        Account contaEncontrada = optionalAccount.get();
-        Set<Account> friends = contaEncontrada.getFriends();
+        Account accountFound = optionalAccount.get();
+        Set<Account> friends = accountFound.getFriends();
 
         return new ArrayList<>(friends);
     }

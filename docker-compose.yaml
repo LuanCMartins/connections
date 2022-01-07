@@ -24,8 +24,8 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=secret
     ports:
       - 9000:80
-  #    depends_on:
-  #      - pg
+    depends_on:
+      - pg
 
   zookeeper:
     image: confluentinc/cp-zookeeper:latest

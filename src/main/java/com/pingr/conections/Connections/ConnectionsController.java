@@ -23,7 +23,7 @@ public class ConnectionsController {
 
     @GetMapping(path = "/{accountId}")
     public List<Account> listUserFriends(@PathVariable("accountId") Long accountId) {
-        return this.accountService.listaAmigos(accountId);
+        return this.accountService.listFriends(accountId);
     }
 
     @DeleteMapping("/{aid}/{bid}")

@@ -20,10 +20,11 @@ public class NewAccountConsumer {
             topics = "${topic.accounts}",
             groupId = "connection_new_accounts"
     )
-    public void consume(String message) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
+    public void consume(Account account/*String message*/) throws IOException {
+        /* mapper = new ObjectMapper();
         Account account = mapper.readValue(message, Account.class);
         System.out.println(account.toString());
+        this.service.storeAccount(account);*/
         this.service.storeAccount(account);
     }
 }
